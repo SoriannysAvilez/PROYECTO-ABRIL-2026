@@ -1,0 +1,241 @@
+/*RESETEO Y ESTILOS GLOBALES*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto; /* crece según el contenido */
+  min-height: 100vh;    
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/*1- BARRA SUPERIOR: redes sociales */
+.barra-superior {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  z-index: 1100; 
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+
+.redes-sociales {
+    padding: 1px 20px;
+    background-color: rgb(253, 102, 2);
+    text-align: right; /*alineacion a la derecha*/
+    border-width: 1px;
+    display: flex;
+    justify-content: flex-end; /* Mueve todo a la derecha */
+    gap: 4px; /* Espacio entre iconos */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.redes-sociales img {
+    width: 20px;   /* Ancho del logo */
+    height: auto;   /* Mantiene la proporción */
+    object-fit: contain; /*el elemnto se ajuste completamente dnetro del contenedro*/
+   
+          
+}
+
+h3.siguenos {
+    color: black;
+    font-family: 'arial';
+    font-size: medium;
+    text-align: right;
+    padding: 5px;
+}
+
+
+/*  2-HEADER: logo, call-center, barra de nav*/
+header {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  box-shadow: 0px 4px 8px rgba(247, 1, 1, 0.3);
+  justify-content: space-between; /* distribuye logo, buscador, íconos */
+  padding-top: 1px;
+  font-size: 1rem;
+  padding: 0px 30px;
+  margin-top: 0px; 
+  top: 30px;
+  position: fixed;
+  left: 0;
+  width: 100%; 
+  z-index: 1000;     /* Para que quede encima */
+  align-items: center;
+  justify-content: space-between; 
+}
+
+/*Barra del medio*/
+.barra-medio {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.imagen-logo{
+    display: flex;
+    align-items: center;
+}
+
+header .imagen-logo img {
+  width: 130px;   /* Ajusta tamaño */
+  height: auto;   /* Mantiene proporción */
+  object-fit: contain; /* se ajusta al contenedor sin recortarse*/
+  margin-left: 20px;
+  justify-content: flex-start;
+  display: flex;
+}
+
+.call-center {
+    margin-left: auto; /* 🔥 empuja todo hacia la derecha */
+    text-align: right;
+}
+
+.call-center h3{
+    color: rgb(250, 112, 0);
+    font-size: x-large;
+    animation: brillo 1s infinite alternate;
+}
+
+.call-center span{
+    color: white;
+    font-size: large;
+}
+
+
+/* Menu de navegacion*/
+.navegacion-principal {
+    font-family: 'Arial', Helvetica, sans-serif;
+    text-align: center;
+    border-width: 1px;
+    display: flex;
+    font-weight: bold;
+    justify-content: center; /* Mueve todo al centro */
+    align-items: flex-end; 
+    font-size: medium;
+    color: rgb(250, 112, 0);
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.3); /* sombra inferior */
+    position: fixed;
+    z-index: 8;
+    gap: 40px;  /* Espacio entre iconos */
+    margin: 0;
+    padding: 4px;
+    top: 150px;
+    left: 0;
+    width: 100%; 
+    z-index: 1000;          /* Para que quede encima */
+    background: black;
+}
+
+.navegacion-principal a:hover{
+    transition: transform 0.3s ease-in-out;;
+    cursor: pointer;
+    transform: scale(1.2)
+}
+
+.redes-sociales img:hover{
+    transition: transform 0.3s ease-in-out;;
+    cursor: pointer;
+    transform: scale(1.2)
+
+}
+
+
+.imagen-menu{
+    display: flex;
+    align-items: center;
+}
+
+header .imagen-menu img {
+  width: 450px;
+  height: 100px;
+  display: block;
+  margin-left: 0; /* Quitamos el margen izquierdo para que no se desplace */
+}
+
+.imagen-logo, .imagen-menu, .call-center {
+    flex: 1; 
+}
+
+@keyframes brillo {
+  0% { text-shadow: 0 0 5px #383434; }
+  100% { text-shadow: 0 0 20px rgb(255, 208, 0); }
+}
+
+/* 2- MAIN = SECCIONES*/
+main {
+  padding: 0px;
+  margin-top: 120px;
+  background-color: #1b1c1d;
+  margin: 0px;
+}
+
+section {
+  margin: 0;
+  padding: 0;
+}
+
+#carousel {
+  width: 100%;
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+.carousel-container {
+  display: flex;
+  align-items: flex-start;
+  height: auto;
+}
+
+#entradas {
+  width: 100%;
+  height: auto;  /* toda la altura de la pantalla */
+  margin: 0;
+  padding: 0;
+  margin-top: 170px;
+}
+
+.portada-entradas {
+  display: flex;       /* los pone en fila */
+}
+
+.portada-uno,
+.portada-dos {
+  flex: 1;             /* mismo tamaño para ambos */
+}
+
+.portada-uno img,
+.portada-dos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* llena sin deformarse */
+  display: block;
+}
+
+
+
+
+/*FOOTER*/
+.copyright {
+  position: relative;         /* se queda al final del contenido */
+  width: 100vw;               /* ocupa todo el ancho de la ventana */
+  background-color: rgb(240, 66, 2);    /* franja oscura */
+  color: black;                /* texto blanco */
+  font-size: 14px;
+  padding: 10px 0;            /* espacio arriba y abajo */
+  text-align: center;         /* centra el texto */
+  white-space: nowrap;        /* evita que se parta en varias líneas */
+  font-weight: bold;
+}
