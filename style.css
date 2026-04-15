@@ -44,8 +44,6 @@ html, body {
     width: 20px;   /* Ancho del logo */
     height: auto;   /* Mantiene la proporción */
     object-fit: contain; /*el elemnto se ajuste completamente dnetro del contenedro*/
-   
-          
 }
 
 h3.siguenos {
@@ -178,7 +176,7 @@ header .imagen-menu img {
 main {
   padding: 0px;
   margin-top: 120px;
-  background-color: #1b1c1d;
+  background-color: #0d0d0e;
   margin: 0px;
 }
 
@@ -224,6 +222,89 @@ section {
   display: block;
 }
 
+.titulo-entradas {
+  color: rgb(255, 136, 1);
+  max-width: 1100px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.lista-entradas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ ahora sí 2 columnas */
+  gap: 20px;
+  padding: 20px;
+  max-width: 1100px;   /* 🔥 limita el ancho */
+  margin: 0 auto;      /* 🔥 centra el contenedor */
+}
+
+/* CARD */
+.card-plato {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-radius: 5px;
+  padding: 15px 20px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  width: 100%; /* importante */
+}
+
+.imagen {
+  order: 1;
+}
+
+.info {
+  order: 2;
+  flex: 1;
+  padding: 0 20px;
+}
+
+.info h3{
+  font-size: xx-large;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.info h3:hover{
+  transition: transform 0.3s ease-in-out;
+  color: rgb(255, 136, 0);
+  cursor: pointer;
+}
+
+.info p {
+  font-size: 0.9rem;
+  color: #242222;
+}
+
+.precio {
+  order: 3;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 70px;
+  font-family: 'Arial', Helvetica, sans-serif;
+  border: 2px solid #fa7a02e5;
+  color: #f56c11;
+  padding: 5px 10px;
+  border-radius: 10px;
+
+}
+
+.card-plato:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+}
+
+.imagen img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 
 
 
@@ -239,3 +320,11 @@ section {
   white-space: nowrap;        /* evita que se parta en varias líneas */
   font-weight: bold;
 }
+
+/*responsive 1 columna en telf*/
+@media (max-width: 768px) {
+  .lista-entradas {
+    grid-template-columns: 1fr;
+  }
+}
+
