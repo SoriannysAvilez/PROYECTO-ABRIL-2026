@@ -19,54 +19,19 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/*1- BARRA SUPERIOR: redes sociales */
-.barra-superior {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; 
-  z-index: 1100; 
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-}
-
-.redes-sociales {
-    padding: 1px 20px;
-    background-color: rgb(253, 102, 2);
-    text-align: right; /*alineacion a la derecha*/
-    border-width: 1px;
-    display: flex;
-    justify-content: flex-end; /* Mueve todo a la derecha */
-    gap: 4px; /* Espacio entre iconos */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.redes-sociales img {
-    width: 20px;   /* Ancho del logo */
-    height: auto;   /* Mantiene la proporción */
-    object-fit: contain; /*el elemnto se ajuste completamente dnetro del contenedro*/
-}
-
-h3.siguenos {
-    color: black;
-    font-family: 'arial';
-    font-size: medium;
-    text-align: right;
-    padding: 5px;
-}
-
 
 /*  2-HEADER: logo, call-center, barra de nav*/
 header {
   display: flex;
   align-items: center;
-  background-color: black;
+  background-color: white;
   box-shadow: 0px 4px 8px rgba(247, 1, 1, 0.3);
   justify-content: space-between; /* distribuye logo, buscador, íconos */
   padding-top: 1px;
   font-size: 1rem;
   padding: 0px 30px;
   margin-top: 0px; 
-  top: 30px;
+  top: 0px;
   position: fixed;
   left: 0;
   width: 100%; 
@@ -102,16 +67,27 @@ header .imagen-logo img {
 }
 
 .call-center h3{
-    color: rgb(250, 112, 0);
-    font-size: x-large;
+    color: rgb(250, 92, 0);
+    font-size: large;
     animation: brillo 1s infinite alternate;
+    font-family: 'Arial', Helvetica, sans-serif;
 }
 
 .call-center span{
-    color: white;
+    color: black;
     font-size: large;
+    font-weight: bold;
 }
 
+.call-center img{
+  width: 130px;   /* Ajusta tamaño */
+  height: auto;   /* Mantiene proporción */
+  object-fit: contain; /* se ajusta al contenedor sin recortarse*/
+  margin-left: 20px;
+  justify-content: flex-start;
+  display: flex;
+  margin-left: auto; /* 🔥 empuja todo hacia la derecha */
+}
 
 /* Menu de navegacion*/
 .navegacion-principal {
@@ -123,14 +99,14 @@ header .imagen-logo img {
     justify-content: center; /* Mueve todo al centro */
     align-items: flex-end; 
     font-size: medium;
-    color: rgb(250, 112, 0);
+    color: rgb(250, 92, 0);
     box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.3); /* sombra inferior */
     position: fixed;
     z-index: 8;
     gap: 40px;  /* Espacio entre iconos */
     margin: 0;
-    padding: 4px;
-    top: 150px;
+    padding: 10px;
+    top: 130px;
     left: 0;
     width: 100%; 
     z-index: 1000;          /* Para que quede encima */
@@ -138,9 +114,10 @@ header .imagen-logo img {
 }
 
 .navegacion-principal a:hover{
-    transition: transform 0.3s ease-in-out;;
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
-    transform: scale(1.2)
+    color: rgb(197, 161, 0);
+     animation: brillo 1s infinite alternate;
 }
 
 .redes-sociales img:hover{
@@ -150,10 +127,23 @@ header .imagen-logo img {
 
 }
 
+.imagen-menu {
+  display: flex;
+  flex-direction: column; /* coloca uno debajo del otro */
+  align-items: center; /* centra horizontalmente */
+}
 
-.imagen-menu{
-    display: flex;
-    align-items: center;
+.imagen-menu h1{
+  font-size: 3rem;
+  color: rgb(90, 52, 3);
+  font-style: italic;
+  font-family:'Dancing Script', serif;
+}
+
+.imagen-menu span {
+  margin-bottom: 5px; /* espacio entre span y h1 */
+  font-size: x-large;
+  color: black;
 }
 
 header .imagen-menu img {
@@ -175,8 +165,8 @@ header .imagen-menu img {
 /* 2- MAIN = SECCIONES*/
 main {
   padding: 0px;
-  margin-top: 120px;
-  background-color: #0d0d0e;
+  margin-top: 80px;
+  background-color: whitesmoke;
   margin: 0px;
 }
 
@@ -202,7 +192,12 @@ section {
   height: auto;  /* toda la altura de la pantalla */
   margin: 0;
   padding: 0;
-  margin-top: 170px;
+  margin-top: 160px;
+  
+  background-image: url('/public/fondoEntrada.png');
+    background-size: cover;      /* Hace que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
 }
 
 .portada-entradas {
@@ -222,20 +217,38 @@ section {
   display: block;
 }
 
+.platos-entradas {
+    width: 85%;            /* Un poco más ancho para que luzca mejor */
+    max-width: 1200px;     /* Límite para pantallas muy grandes */
+    margin: 30px auto;     /* Centra el contenedor y da espacio arriba/abajo */
+    background: hsla(51, 63%, 56%, 0.5); /* El color café/naranja que se ve en tu imagen */
+    padding: 40px;         /* Espacio interno para que las cartas no toquen el borde */
+    border-radius: 5px;   /* Bordes redondeados del menú */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); /* Sombra pesada para dar profundidad */
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
 .titulo-entradas {
-  color: rgb(255, 136, 1);
+  color: black;
   max-width: 1100px;
   margin: 20px auto;
   text-align: center;
+  font-family:'Dancing Script', serif;
+  font-weight: bold;
+  font-size: 3rem;
 }
 
 .lista-entradas {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* ✅ ahora sí 2 columnas */
-  gap: 20px;
-  padding: 20px;
-  max-width: 1100px;   /* 🔥 limita el ancho */
-  margin: 0 auto;      /* 🔥 centra el contenedor */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  width: 100%;           /* Ocupa todo el espacio interno del contenedor padre */
+  padding: 0;            /* El padding ya lo tiene el padre */
+  margin: 0 auto;
 }
 
 /* CARD */
@@ -307,19 +320,214 @@ section {
 
 
 
-
 /*FOOTER*/
-.copyright {
-  position: relative;         /* se queda al final del contenido */
-  width: 100vw;               /* ocupa todo el ancho de la ventana */
-  background-color: rgb(240, 66, 2);    /* franja oscura */
-  color: black;                /* texto blanco */
-  font-size: 14px;
-  padding: 10px 0;            /* espacio arriba y abajo */
-  text-align: center;         /* centra el texto */
-  white-space: nowrap;        /* evita que se parta en varias líneas */
-  font-weight: bold;
+
+footer {
+    background: whitesmoke;
+    color: black;
+    width: 100%;
+    font-family: 'Arial', Helvetica, sans-serif;
 }
+
+.logo-footer {
+    align-items: center;     /* Centra el logo en su propia columna */
+    justify-content: flex-start;
+}
+
+.logo-footer img {
+    width: 140px;
+    height: auto;
+    margin-top: 0;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;    /* Mantiene las líneas divisorias uniformes */
+    padding: 15px 50px;
+    background: rgb(80, 61, 33);
+    width: 100%;
+}
+
+
+/* --- ESTILO PARA TODAS LAS COLUMNAS (Logo, Contacto, Locales, Redes) --- */
+/* Columnas estrechas (Logo y Redes) */
+.logo-footer, 
+.redes-sociales {
+    flex: 1;                 /* Ocupa 1 parte del espacio */
+    padding: 0 25px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Columnas anchas (Información/Contacto y Locales) */
+.footer-contacto, 
+.locales {
+    flex: 2;                 /* Ocupa el DOBLE de espacio que el logo */
+    padding: 0 30px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/*se elimina la linea dle ultimo bloque*/
+.redes-sociales {
+    border-right: none;
+}
+
+/* --- ALINEACIÓN DE TÍTULOS (Soluciona el problema de nivel) --- */
+.footer-info h3, 
+.footer-info h4 {
+    margin: 0 0 20px 0;      /* Importante: 0 arriba para que todos empiecen igual */
+    color: rgb(250, 92, 0);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* --- AJUSTE DE TEXTOS E ICONOS --- */
+
+.footer-contacto p {
+    font-size: 1rem;
+    margin-bottom: 3px;
+    white-space: nowrap; /* Evita que el email o números largos se corten si hay espacio */
+}
+
+.footer-info h3, 
+.footer-info h4 {
+    margin: 0 0 15px 0 !important; /* Forzamos el 0 arriba para alinear con Locales */
+    color: rgb(250, 92, 0);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footer-contacto p, 
+.locales li, 
+.locales span,
+.footer-info p, 
+.footer-info li {
+    font-size: 15px !important; /* Usamos px para evitar variaciones de rem */
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    text-transform: none; /* Asegura que no haya mayúsculas extra */
+}
+
+.footer-contacto, 
+.locales {
+    flex: 2;
+    padding: 0 30px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinea el contenido al tope */
+}
+
+.footer-contacto {
+    gap: 0; 
+}
+
+.locales ul {
+    list-style: none; /* Quita puntos si los tuviera */
+    padding: 0;
+    gap: 15px;
+}
+
+.locales h4 {
+    margin-top: 0 !important; 
+}
+
+/* Formas de Pago */
+.formas-pagos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.formas-pagos img {
+    width: 60px;
+    height: 35px;
+    object-fit: contain;
+    background-color: white; /* Resalta sobre el fondo café */
+    padding: 3px;
+    border-radius: 6px;
+}
+
+/* --- NUEVA CLASE PARA ALINEAR ICONOS HORIZONTALMENTE --- */
+.redes-sociales {
+  flex: 1;                 /* Sigue siendo 1/4 del ancho del footer */
+  padding: 0 25px;
+  border-right: none;      /* Quitamos la línea final */
+  display: flex;
+  flex-direction: column;  /* ALINEA LOS ELEMENTOS VERTICALMENTE (Título arriba, iconos abajo) */
+  align-items: center;     /* Centra todo horizontalmente dentro de la columna */
+  justify-content: flex-start; /* Alinea el contenido al tope */
+  min-width: 0;
+}
+
+.redes-sociales .siguenos {
+  margin: 0 0 15px 0;      /* Importante: 0 arriba para alinear con Información/Locales */
+  color: rgb(250, 92, 0);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.redes-sociales img {
+  width: 32px;             /* Ajusta el tamaño según prefieras */
+  height: 32px;
+  background: white;       /* Fondo blanco para que resalten */
+  border-radius: 50%;      /* Iconos circulares se ven más modernos */
+  padding: 5px;            /* Espacio interno dentro del círculo */
+  transition: transform 0.3s;
+}
+
+.redes-sociales .a {
+  display: flex;           /* ALINEA LOS ICONOS HORIZONTALMENTE */
+  flex-direction: row;     /* Asegura que estén uno al lado del otro */
+  gap: 15px;               /* Espacio entre los iconos */
+  justify-content: center; /* Centra los iconos en la fila */
+  align-items: center;     /* Centra los iconos verticalmente entre ellos */
+  margin-bottom: 25px;     /* Espacio hacia abajo antes de Música */
+}
+
+.redes-sociales a:hover img {
+  transform: scale(1.1); /* Efecto de agrandamiento suave al pasar el mouse */
+}
+
+
+/* --- REPRODUCTOR Y AUDIO --- */
+.audio {
+    width: 100%;
+    margin-top: auto;        /* Empuja el reproductor hacia abajo */
+}
+
+audio {
+    width: 100%;             /* Se adapta al ancho de la columna */
+    max-width: 200px;
+    height: 30px;
+}
+
+.reproductor {
+    margin: 0; /* Limpia márgenes por defecto */
+    font-size: 1rem;
+    color: rgb(250, 92, 0);
+}
+
+
+.copyright {
+    background-color: black;
+    color: rgb(250, 92, 0);
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
 
 /*responsive 1 columna en telf*/
 @media (max-width: 768px) {
