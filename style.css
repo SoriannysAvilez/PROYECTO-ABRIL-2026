@@ -608,15 +608,132 @@ footer {
     font-weight: bold;
 }
 
+/* Clase para Javascript*/
 .activo {
   font-weight: bold;
   color: rgb(197, 161, 0);
   animation: brillo 1s infinite alternate;
 }
 
-/* ---- RESPONSIVE: 1 columna en teléfonos ---- */
+/* =========================================
+   DISEÑO RESPONSIVE (Móviles y Tablets)
+   ========================================= */
+
+/* --- TABLETS (Pantallas medianas) --- */
+@media (max-width: 1024px) {
+    .navegacion-principal {
+        gap: 20px; 
+        font-size: 0.9rem;
+    }
+    header .imagen-menu img {
+        width: 300px; /* Reducimos la imagen central */
+    }
+}
+
+/* --- MÓVILES (Pantallas pequeñas) --- */
 @media (max-width: 768px) {
-  .lista-entradas {
-    grid-template-columns: 1fr;
-  }
+    
+    /* 1. HEADER: Pasamos de Fila a Columna */
+    .barra-medio {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    header .imagen-logo img, 
+    .call-center img {
+        margin: 0 auto; /* Centramos las imágenes */
+        justify-content: center;
+    }
+
+    header .imagen-menu img {
+        width: 100%;
+        max-width: 280px; /* Evita que rompa la pantalla */
+        height: auto;
+    }
+
+    .call-center {
+        text-align: center;
+    }
+
+    /* Quitamos el 'fixed' extremo en móvil para que fluya natural */
+    header {
+        position: relative; 
+        padding: 0;
+    }
+
+    .navegacion-principal {
+        position: relative; 
+        top: 0; 
+        flex-wrap: wrap; /* Si los botones no caben, bajan a la siguiente línea */
+        padding: 15px;
+    }
+
+    /* Como el header ya no es fixed, quitamos el margen superior del main */
+    main, #entradas {
+        margin-top: 0;
+    }
+
+    /* 2. CONTENIDO PRINCIPAL */
+    .portada-entradas {
+        flex-direction: column; /* Las dos imágenes de cabecera se apilan */
+    }
+
+    .platos-entradas {
+        width: 95%; /* Aprovecha el espacio del celular */
+        padding: 20px;
+    }
+
+    .titulo-entradas {
+        font-size: 2.2rem;
+    }
+
+    /* Esta es la regla que ya tenían, pasa todo a 1 columna */
+    .lista-entradas {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reordenamos la tarjeta para que la imagen quede arriba en móviles */
+    .card-plato {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .card-plato .info { order: 2; }
+    .card-plato .imagen { order: 1; }
+    .card-plato .precio { order: 3; margin-top: 10px; }
+
+    .imagen img {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* 3. FOOTER: Apilamos todas las secciones */
+    .footer-info {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .logo-footer, 
+    .footer-contacto, 
+    .locales, 
+    .redes-sociales {
+        border-right: none; /* Adiós a las líneas separadoras */
+        padding: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .locales ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formas-pagos {
+        justify-content: center;
+    }
 }
