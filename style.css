@@ -21,7 +21,7 @@ a {
 html, body {
   margin: 0;
   padding: 0;
-  height: auto; /* crece según el contenido */
+  height: auto; 
   min-height: 100vh;    
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -193,21 +193,28 @@ section {
   display: flex;
   align-items: flex-start;
   height: auto;
+  transition: transform 0.5s ease-in-out; /* transición suave al deslizar entre secciones */
 }
 
-#entradas {
+/* ---- ESTILOS COMPARTIDOS PARA LAS 3 SECCIONES ---- */
+
+#entradas,
+#platosPrincipales,
+#bebidas {
+  min-width: 100%;   /* cada sección ocupa exactamente 1 "página" del carousel */
   width: 100%;
-  height: auto;  /* toda la altura de la pantalla */
+  height: auto;
   margin: 0;
   padding: 0;
-  margin-top: 160px;
-  
+  margin-top: 160px; /* compensa header + nav fijos */
+
   background-image: url('/public/fondoEntrada.png');
-    background-size: cover;      /* Hace que la imagen cubra todo el contenedor */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+/* ---- PORTADA (imágenes decorativas en cada sección) ---- */
 .portada-entradas {
   display: flex;       /* los pone en fila */
 }
@@ -225,6 +232,7 @@ section {
   display: block;
 }
 
+/* ---- CONTENEDOR DE PLATOS ---- */
 .platos-entradas {
     width: 85%;            
     max-width: 1200px;     
@@ -240,6 +248,57 @@ section {
     gap: 20px;
 }
 
+#platos-principales {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Para que el título y el video se apilen */
+    align-items: center;    /* Centra los hijos horizontalmente */
+    justify-content: center; 
+    padding: 50px 0;
+    background-color: whitesmoke;
+}
+
+/* Fondo diferenciado: Platos Principales — tono cálido anaranjado */
+.platos-principales-bg {
+  background: hsla(54, 97%, 43%, 0.12);
+  display: grid;
+  place-items: center;    /* Centra en ambos ejes a la vez */
+  min-height: 100vh;
+}
+
+/* Fondo diferenciado: Bebidas — tono azul-celeste */
+.bebidas-bg {
+  background: hsla(200, 60%, 50%, 0.12);
+}
+
+
+.portada-platos {
+    width: 60%;
+    max-width: 1000px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+    display: block;
+
+    /* MODIFICACIÓN AQUÍ */
+    /* 0 para arriba/abajo, auto para los lados (centrado horizontal) */
+    margin: 0 auto; 
+
+    background-image: url('/public/fondoEntrada.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.portada-platos video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;       /* Llena el contenedor sin deformarse */
+}
+
+/* ---- TÍTULO DE CADA SECCIÓN ---- */
 .titulo-entradas {
   color: var(--color-titulo-carta);
   max-width: 1100px;
@@ -250,6 +309,7 @@ section {
   font-size: 3rem;
 }
 
+/* ---- GRILLA DE PLATOS ---- */
 .lista-entradas {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -259,17 +319,24 @@ section {
   margin: 0 auto;
 }
 
-/* CARD */
+/* ============================================================
+   CARD DE PLATO
+   Requerimiento: display block + bordes para separar platos
+   ============================================================ */
 .card-plato {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;          /* requerimiento: display block */
   background: var(--color-fondo);
+  border: 1px solid rgba(0, 0, 0, 0.12); /* borde para separar platos */
   border-radius: 5px;
   padding: 15px 20px;
   box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  width: 100%; /* importante */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* efecto hover suave */
+
+  /* Layout interno en fila con flexbox */
+  display: flex;           /* flex para distribuir imagen / info / precio internamente */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .imagen {
@@ -301,19 +368,38 @@ section {
   color: #242222;
 }
 
+/* ============================================================
+   PRECIO
+   Requerimiento: display inline-block + precio resaltado
+   ============================================================ */
 .precio {
   order: 3;
+  display: inline-block;   /* requerimiento: display inline-block */
   font-size: 1.2rem;
   font-weight: bold;
   min-width: 70px;
   font-family: 'Arial', Helvetica, sans-serif;
-  border: 2px solid var(--color-titulos);
-  color: var(--color-titulos);
+  border: 2px solid var(--color-titulos); /* borde que resalta el precio */
+  color: var(--color-titulos);            /* color naranja que resalta el precio */
   padding: 5px 10px;
   border-radius: 10px;
-
+  text-align: center;
+}
+.platos-principales-bg .precio {
+    background: rgb(241, 191, 124);
+    color: var(--color-titulo-carta);
+    border-color: var(--color-titulo-carta);
 }
 
+/* Precio diferenciado para bebidas: azul */
+.precio-bebida {
+  border-color: #0077b6;
+  color: #0077b6;
+}
+
+/* ============================================================
+   HOVER EN CADA PLATO  (requerimiento: efecto hover)
+   ============================================================ */
 .card-plato:hover {
   transform: translateY(-4px);
   box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
@@ -500,21 +586,17 @@ footer {
 
 
 /* --- REPRODUCTOR Y AUDIO --- */
-.audio {
-    width: 100%;
-    margin-top: auto;        /* Empuja el reproductor hacia abajo */
+#audioBtn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s;
 }
 
-audio {
-    width: 100%;             /* Se adapta al ancho de la columna */
-    max-width: 200px;
-    height: 30px;
-}
-
-.reproductor {
-    margin: 0; /* Limpia márgenes por defecto */
-    font-size: 1rem;
-    color: var(--color-titulos);
+#audioBtn:hover {
+    transform: scale(1.2);
 }
 
 
@@ -532,10 +614,9 @@ audio {
   animation: brillo 1s infinite alternate;
 }
 
-/*responsive 1 columna en telf*/
+/* ---- RESPONSIVE: 1 columna en teléfonos ---- */
 @media (max-width: 768px) {
   .lista-entradas {
     grid-template-columns: 1fr;
   }
 }
-
